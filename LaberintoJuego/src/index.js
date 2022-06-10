@@ -30,7 +30,6 @@ const jugar = () => {
        gameOver = true 
        if(gameOver){
            clearInterval(limpiarInterval);
-           cargaInicial();
            cabeza.borrar();
            cabeza.x = 225;
            cabeza.y = 450;
@@ -46,7 +45,10 @@ const jugar = () => {
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
-           cargaInicial;
+           cabeza.borrar();
+           cabeza.x = 225;
+           cabeza.y = 450;
+           cabeza.dibujar();
         }
     }
     else if (cabeza.detectarColision(pared3)) {
@@ -54,11 +56,12 @@ const jugar = () => {
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
-           cargaInicial;
+           cabeza.borrar();
+           cabeza.x = 225;
+           cabeza.y = 450;
+           cabeza.dibujar();
         }
     }
-
-
 }
 
 const cargaInicial = () => {
@@ -72,16 +75,23 @@ const cargaInicial = () => {
 const moverCabeza = (e) => {
     cabeza.borrar();
     if (e.key === "ArrowLeft") {
-      cabeza.x -= 5;
+        if (cabeza.x > 0) {
+            cabeza.x -= 5;
+      }
     }
     if (e.key === "ArrowRight") {
-      cabeza.x += 5;
+        if (cabeza.x < 450) {
+            cabeza.x += 5;
+      }
     }
     if (e.key === "ArrowUp") {
-      cabeza.y -= 5;
+        if (cabeza.y > 0) {
+            cabeza.y -= 5;}
     }
     if (e.key === "ArrowDown") {
-      cabeza.y += 5;
+        if (cabeza.y < 450) {
+            cabeza.y += 5;
+        }
     }
     cabeza.dibujar();
 };
