@@ -24,6 +24,92 @@ const pared2 = new Objeto (300, 0, 200, 200, pared2Imagen, ctx)
 
 const pared3 = new Objeto (300, 300, 200, 200, pared2Imagen, ctx)
 
+//--------------------------------------------------------------------------------------
+let game;
+let splashScreen;
+let gameScreen;
+//let gameOverScreen; //pendiente de crear
+
+
+//DOM
+function buildDom(htmlString) {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = htmlString;
+    return tempDiv.children[0];
+}
+
+
+//splashScreen -- class rabbit cambiarla en css y aqui
+function createSplashScreen() {
+    splashScreen = buildDom(`
+      <main class="main1">
+          <h1>LABERINTO</h1>
+          <p class="rabbit">USA LAS FLECHAS PARA JUGAR</p> 
+          <div><button id="start-button" onClick="playClick(), playMusic()">START</button></div>
+      </main>
+  `);
+  
+    document.body.appendChild(splashScreen);
+    const startButton = splashScreen.querySelector("button");
+    startButton.addEventListener("click", startGame);
+}
+
+function playClick(){
+    audioClick.currenTime = 0;
+    audioClick.play();
+  }
+
+function playMusic(){
+    audio.currentTime = 0;
+    audio.volume = 0.1;
+    audio.play();
+}
+
+let audio = new Audio("audio/alexander_nakarada_superepic.mp3"); //AUDIO GAME
+let audioGameOver = new Audio("audio/lesion_x_bad_feelings_cut.mp3"); //AUDIO GAMOVER
+let audioClick = new Audio("audio/diablo_2_skull_gem_sound.mp3") //AUDIO COLISION
+
+function removeSplashScreen() {
+    splashScreen.remove();
+}
+
+function startGame() {
+    removeSplashScreen();
+    // if (gameOverScreen) {
+    //   removeGameOverScreen();
+      playMusic();
+    // }
+    createGameScreen();
+  
+    game = new Game(gameScreen);
+    game.start();
+}
+
+
+function createGameScreen() {
+    gameScreen = buildDom(`
+      <main class="game container">
+          <header id="countdown">
+              
+              <div class="time">
+                  <span class="label"><b>TIME</b></span>
+                  <span class="value"></span>
+              </div>
+              <button id="play" onClick="playClick(), playMusic()"><b>MUSIC ON</b></button>
+              <button id="stop" onClick="playClick(), stopMusic()"><b>MUSIC OFF</b></button>
+            </div>
+          </header>
+          <div class="canvas-container">
+              <canvas></canvas>
+          </div>
+      </main>
+  `);
+    document.body.appendChild(gameScreen);
+    return gameScreen;
+  }
+//---------------------------------------------------------------------------------
+
+
 const jugar = () => {
     if (cabeza.detectarColision(pared1)) {
        alert ("Has muerto. Suerte la próxima vez");
