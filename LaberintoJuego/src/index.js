@@ -6,23 +6,39 @@ canvas.style.backgroundColor = "green";
 let cabezaImagen = new Image();
 cabezaImagen.src = "src/cabeza2.png";
 
-let pared1Imagen = new Image();
-pared1Imagen.src = "src/pared1.png";
+let pared450x30Imagen = new Image();
+pared450x30Imagen.src = "src/pared450x30.png";
 
-let pared2Imagen = new Image();
-pared2Imagen.src = "src/pared2.png";
+let pared1140x30Imagen = new Image();
+pared1140x30Imagen.src = "src/pared1140x30.png";
+
+let pared30x640Imagen = new Image();
+pared30x640Imagen.src = "src/pared30x640.png";
+
+let pared360x30Imagen = new Image();
+pared360x30Imagen.src = "src/pared360x30.png";
+
+let pared690x30Imagen = new Image();
+pared690x30Imagen.src = "src/pared690x30.png";
 
 let gameOver = false
 
 let limpiarInterval; 
 
-const cabeza = new Objeto(225, 450, 50, 50, cabezaImagen, ctx)
+const cabeza = new Objeto(380, 650, 40, 40, cabezaImagen, ctx);
 
-const pared1 = new Objeto (0, 0, 200, 500, pared1Imagen, ctx)
+const pared1 = new Objeto (0, 0, 1140, 30, pared1140x30Imagen, ctx);
 
-const pared2 = new Objeto (300, 0, 200, 200, pared2Imagen, ctx)
+const pared2 = new Objeto (0, 30, 30, 640, pared30x640Imagen, ctx);
 
-const pared3 = new Objeto (300, 300, 200, 200, pared2Imagen, ctx)
+const pared3 = new Objeto (1110, 30, 30, 640, pared30x640Imagen, ctx);
+
+const pared4 = new Objeto (0, 670, 360, 30, pared360x30Imagen, ctx);
+
+const pared5 = new Objeto (450, 670, 690, 30, pared690x30Imagen, ctx);
+
+
+
 
 const jugar = () => {
     if (cabeza.detectarColision(pared1)) {
@@ -31,8 +47,8 @@ const jugar = () => {
        if(gameOver){
            clearInterval(limpiarInterval);
            cabeza.borrar();
-           cabeza.x = 225;
-           cabeza.y = 450;
+           cabeza.x = 380;
+           cabeza.y = 650;
            cabeza.dibujar();
            
            // seria ir a la página de inicio
@@ -46,8 +62,8 @@ const jugar = () => {
         if(gameOver){
            clearInterval(limpiarInterval);
            cabeza.borrar();
-           cabeza.x = 225;
-           cabeza.y = 450;
+           cabeza.x = 380;
+           cabeza.y = 650;
            cabeza.dibujar();
         }
     }
@@ -57,8 +73,30 @@ const jugar = () => {
         if(gameOver){
            clearInterval(limpiarInterval);
            cabeza.borrar();
-           cabeza.x = 225;
-           cabeza.y = 450;
+           cabeza.x = 380;
+           cabeza.y = 650;
+           cabeza.dibujar();
+        }
+    }
+    else if (cabeza.detectarColision(pared4)) {
+        alert ("Has muerto. Suerte la próxima vez");
+        gameOver = true 
+        if(gameOver){
+           clearInterval(limpiarInterval);
+           cabeza.borrar();
+           cabeza.x = 380;
+           cabeza.y = 650;
+           cabeza.dibujar();
+        }
+    }
+    else if (cabeza.detectarColision(pared5)) {
+        alert ("Has muerto. Suerte la próxima vez");
+        gameOver = true 
+        if(gameOver){
+           clearInterval(limpiarInterval);
+           cabeza.borrar();
+           cabeza.x = 380;
+           cabeza.y = 650;
            cabeza.dibujar();
         }
     }
@@ -69,6 +107,8 @@ const cargaInicial = () => {
     pared1.dibujar();
     pared2.dibujar();
     pared3.dibujar();
+    pared4.dibujar();
+    pared5.dibujar();
     limpiarInterval = setInterval(jugar, 10);
 };
 
@@ -80,7 +120,7 @@ const moverCabeza = (e) => {
       }
     }
     if (e.key === "ArrowRight") {
-        if (cabeza.x < 450) {
+        if (cabeza.x < 950) {
             cabeza.x += 5;
       }
     }
@@ -89,7 +129,7 @@ const moverCabeza = (e) => {
             cabeza.y -= 5;}
     }
     if (e.key === "ArrowDown") {
-        if (cabeza.y < 450) {
+        if (cabeza.y < 650) {
             cabeza.y += 5;
         }
     }
