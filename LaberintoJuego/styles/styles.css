@@ -1,0 +1,28 @@
+
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+body {
+  /*background: url(../img/pared2.png);*/
+  background-size:cover;
+  background-position: center top;
+  height: 100%;
+  width: auto;
+  z-index:-1;
+  margin: 0;
+  padding: 0;
+}
+p {
+color: red
+}

@@ -1,28 +1,28 @@
-const canvas = document.querySelector("#canvas");
-const ctx = canvas.getContext("2d");
+// const canvas = document.querySelector("#canvas");
+// const ctx = canvas.getContext("2d");
 
-canvas.style.backgroundColor = "green";
+// canvas.style.backgroundColor = "green";
 
-let cabezaImagen = new Image();
-cabezaImagen.src = "src/cabeza2.png";
+// let cabezaImagen = new Image();
+// cabezaImagen.src = "img/cabeza2.png";
 
-let pared1Imagen = new Image();
-pared1Imagen.src = "src/pared1.png";
+// let pared1Imagen = new Image();
+// pared1Imagen.src = "img/pared1.png";
 
-let pared2Imagen = new Image();
-pared2Imagen.src = "src/pared2.png";
+// let pared2Imagen = new Image();
+// pared2Imagen.src = "img/pared2.png";
 
-let gameOver = false
+// let gameOver = false
 
-let limpiarInterval; 
+// let limpiarInterval; 
 
-const cabeza = new Objeto(225, 450, 50, 50, cabezaImagen, ctx)
+// const cabeza = new Movimiento (225, 450, 50, 50, cabezaImagen, ctx)
 
-const pared1 = new Objeto (0, 0, 200, 500, pared1Imagen, ctx)
+// const pared1 = new Movimiento (0, 0, 200, 500, pared1Imagen, ctx)
 
-const pared2 = new Objeto (300, 0, 200, 200, pared2Imagen, ctx)
+// const pared2 = new Movimiento (300, 0, 200, 200, pared2Imagen, ctx)
 
-const pared3 = new Objeto (300, 300, 200, 200, pared2Imagen, ctx)
+// const pared3 = new Movimiento (300, 300, 200, 200, pared2Imagen, ctx)
 
 //--------------------------------------------------------------------------------------
 let game;
@@ -43,9 +43,13 @@ function buildDom(htmlString) {
 function createSplashScreen() {
     splashScreen = buildDom(`
       <main class="main1">
+
           <h1>LABERINTO</h1>
           <p class="rabbit">USA LAS FLECHAS PARA JUGAR</p> 
-          <div><button id="start-button" onClick="playClick(), playMusic()">START</button></div>
+          <p class="rabbit">USA LAS FLECHAS PARA JUGAR</p> 
+          <p class="rabbit">USA LAS FLECHAS PARA JUGAR</p> 
+          <p class="rabbit">USA LAS FLECHAS PARA JUGAR</p> 
+          <div><button id="start-button" onClick="playMusic()">START</button></div>
       </main>
   `);
   
@@ -54,7 +58,7 @@ function createSplashScreen() {
     startButton.addEventListener("click", startGame);
 }
 
-function playClick(){
+function playClick(){  // sonido calavera colision
     audioClick.currenTime = 0;
     audioClick.play();
   }
@@ -65,7 +69,7 @@ function playMusic(){
     audio.play();
 }
 
-let audio = new Audio("audio/alexander_nakarada_superepic.mp3"); //AUDIO GAME
+let audio = new Audio("audio/nightrain.mp3"); //AUDIO GAME
 let audioGameOver = new Audio("audio/lesion_x_bad_feelings_cut.mp3"); //AUDIO GAMOVER
 let audioClick = new Audio("audio/diablo_2_skull_gem_sound.mp3") //AUDIO COLISION
 
@@ -80,13 +84,111 @@ function startGame() {
       playMusic();
     // }
     createGameScreen();
-  
-    game = new Game(gameScreen);
-    game.start();
+    
+    // game = new Game(gameScreen);
+    // game.start();
 }
 
 
 function createGameScreen() {
+    const canvas = document.querySelector("#canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.style.backgroundColor = "green";
+
+    let cabezaImagen = new Image();
+    cabezaImagen.src = "img/cabeza2.png";
+
+    let pared1Imagen = new Image();
+    pared1Imagen.src = "img/pared1.png";
+
+    let pared2Imagen = new Image();
+    pared2Imagen.src = "img/pared2.png";
+
+    let gameOver = false
+
+    let limpiarInterval; 
+
+    const cabeza = new Movimiento (225, 450, 50, 50, cabezaImagen, ctx)
+
+    const pared1 = new Movimiento (0, 0, 200, 500, pared1Imagen, ctx)
+
+    const pared2 = new Movimiento (300, 0, 200, 200, pared2Imagen, ctx)
+
+    const pared3 = new Movimiento (300, 300, 200, 200, pared2Imagen, ctx)
+
+    const jugar = () => {
+        if (cabeza.detectarColision(pared1)) {
+           alert ("Has muerto. Suerte la próxima vez");
+           gameOver = true 
+           if(gameOver){
+               clearInterval(limpiarInterval);
+               cabeza.borrar();
+               cabeza.x = 225;
+               cabeza.y = 450;
+               cabeza.dibujar();
+               
+               // seria ir a la página de inicio
+    
+               // Ocultar el canvas 
+            }
+        }
+        else if (cabeza.detectarColision(pared2)) {
+            alert ("Has muerto. Suerte la próxima vez");
+            gameOver = true 
+            if(gameOver){
+               clearInterval(limpiarInterval);
+               cabeza.borrar();
+               cabeza.x = 225;
+               cabeza.y = 450;
+               cabeza.dibujar();
+            }
+        }
+        else if (cabeza.detectarColision(pared3)) {
+            alert ("Has muerto. Suerte la próxima vez");
+            gameOver = true 
+            if(gameOver){
+               clearInterval(limpiarInterval);
+               cabeza.borrar();
+               cabeza.x = 225;
+               cabeza.y = 450;
+               cabeza.dibujar();
+            }
+        }
+    }
+    const cargaInicial = () => {
+        cabeza.dibujar();
+        pared1.dibujar();
+        pared2.dibujar();
+        pared3.dibujar();
+        limpiarInterval = setInterval(jugar, 10);
+    };
+    
+    const moverCabeza = (e) => {
+        cabeza.borrar();
+        if (e.key === "ArrowLeft") {
+            if (cabeza.x > 0) {
+                cabeza.x -= 5;
+          }
+        }
+        if (e.key === "ArrowRight") {
+            if (cabeza.x < 450) {
+                cabeza.x += 5;
+          }
+        }
+        if (e.key === "ArrowUp") {
+            if (cabeza.y > 0) {
+                cabeza.y -= 5;}
+        }
+        if (e.key === "ArrowDown") {
+            if (cabeza.y < 450) {
+                cabeza.y += 5;
+            }
+        }
+        cabeza.dibujar();
+    };
+    
+
     gameScreen = buildDom(`
       <main class="game container">
           <header id="countdown">
@@ -104,85 +206,97 @@ function createGameScreen() {
           </div>
       </main>
   `);
+    // cargaInicial();
+    // moverCabeza();
     document.body.appendChild(gameScreen);
+    
+    const testButton = gameScreen.querySelector("button");
+    testButton.addEventListener("click", cargaInicial);
+    testButton.addEventListener("click", moverCabeza);
+
+
     return gameScreen;
-  }
+
+}
 //---------------------------------------------------------------------------------
 
 
-const jugar = () => {
-    if (cabeza.detectarColision(pared1)) {
-       alert ("Has muerto. Suerte la próxima vez");
-       gameOver = true 
-       if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 225;
-           cabeza.y = 450;
-           cabeza.dibujar();
+// const jugar = () => {
+//     if (cabeza.detectarColision(pared1)) {
+//        alert ("Has muerto. Suerte la próxima vez");
+//        gameOver = true 
+//        if(gameOver){
+//            clearInterval(limpiarInterval);
+//            cabeza.borrar();
+//            cabeza.x = 225;
+//            cabeza.y = 450;
+//            cabeza.dibujar();
            
-           // seria ir a la página de inicio
+//            // seria ir a la página de inicio
 
-           // Ocultar el canvas 
-        }
-    }
-    else if (cabeza.detectarColision(pared2)) {
-        alert ("Has muerto. Suerte la próxima vez");
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 225;
-           cabeza.y = 450;
-           cabeza.dibujar();
-        }
-    }
-    else if (cabeza.detectarColision(pared3)) {
-        alert ("Has muerto. Suerte la próxima vez");
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 225;
-           cabeza.y = 450;
-           cabeza.dibujar();
-        }
-    }
-}
+//            // Ocultar el canvas 
+//         }
+//     }
+//     else if (cabeza.detectarColision(pared2)) {
+//         alert ("Has muerto. Suerte la próxima vez");
+//         gameOver = true 
+//         if(gameOver){
+//            clearInterval(limpiarInterval);
+//            cabeza.borrar();
+//            cabeza.x = 225;
+//            cabeza.y = 450;
+//            cabeza.dibujar();
+//         }
+//     }
+//     else if (cabeza.detectarColision(pared3)) {
+//         alert ("Has muerto. Suerte la próxima vez");
+//         gameOver = true 
+//         if(gameOver){
+//            clearInterval(limpiarInterval);
+//            cabeza.borrar();
+//            cabeza.x = 225;
+//            cabeza.y = 450;
+//            cabeza.dibujar();
+//         }
+//     }
+// }
 
-const cargaInicial = () => {
-    cabeza.dibujar();
-    pared1.dibujar();
-    pared2.dibujar();
-    pared3.dibujar();
-    limpiarInterval = setInterval(jugar, 10);
-};
+// const cargaInicial = () => {
+//     cabeza.dibujar();
+//     pared1.dibujar();
+//     pared2.dibujar();
+//     pared3.dibujar();
+//     limpiarInterval = setInterval(jugar, 10);
+// };
 
-const moverCabeza = (e) => {
-    cabeza.borrar();
-    if (e.key === "ArrowLeft") {
-        if (cabeza.x > 0) {
-            cabeza.x -= 5;
-      }
-    }
-    if (e.key === "ArrowRight") {
-        if (cabeza.x < 450) {
-            cabeza.x += 5;
-      }
-    }
-    if (e.key === "ArrowUp") {
-        if (cabeza.y > 0) {
-            cabeza.y -= 5;}
-    }
-    if (e.key === "ArrowDown") {
-        if (cabeza.y < 450) {
-            cabeza.y += 5;
-        }
-    }
-    cabeza.dibujar();
-};
+// const moverCabeza = (e) => {
+//     cabeza.borrar();
+//     if (e.key === "ArrowLeft") {
+//         if (cabeza.x > 0) {
+//             cabeza.x -= 5;
+//       }
+//     }
+//     if (e.key === "ArrowRight") {
+//         if (cabeza.x < 450) {
+//             cabeza.x += 5;
+//       }
+//     }
+//     if (e.key === "ArrowUp") {
+//         if (cabeza.y > 0) {
+//             cabeza.y -= 5;}
+//     }
+//     if (e.key === "ArrowDown") {
+//         if (cabeza.y < 450) {
+//             cabeza.y += 5;
+//         }
+//     }
+//     cabeza.dibujar();
+// };
 
-window.addEventListener("load", cargaInicial);
+/////window.addEventListener("load", cargaInicial);
 
-window.addEventListener("keydown", moverCabeza);
+//window.addEventListener("keydown", moverCabeza);
 
+//-----------------------------------------------------------------
+
+window.addEventListener("load", createSplashScreen);
