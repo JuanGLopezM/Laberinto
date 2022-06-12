@@ -4,6 +4,18 @@ html {
   box-sizing: border-box;
   height: 100%;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+
+  
+}
+
+.instrucciones{
+  font-size:35px;
+}
+
+.instrucciones span{
+  color: red;
+  font-size: 90px;
 }
 
 *,
@@ -14,7 +26,7 @@ html {
 
 
 body {
-  /*background: url(../img/pared2.png);*/
+  background: url(../img/pared2.png);
   background-size:cover;
   background-position: center top;
   height: 100%;
@@ -24,5 +36,5 @@ body {
   padding: 0;
 }
 p {
-color: red
+color: blue;
 }
