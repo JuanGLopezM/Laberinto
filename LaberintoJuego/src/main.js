@@ -37,13 +37,15 @@ function buildDom(htmlString) {
     tempDiv.innerHTML = htmlString;
     return tempDiv.children[0];
 }
-
+// function newDom(htmlString) {
+//     const newBody = document.body.innerHTML
+//     return newBody.insertAdjacentElement(afterbegin, htmlString);
+// }
 
 //splashScreen 
 function createSplashScreen() {
     splashScreen = buildDom(`
       <main class="main1">
-
           <h1>LABERINTO</h1>
           <p class="instrucciones">USA LAS FLECHAS PARA JUGAR</p> 
           <p class="instrucciones">USA LAS FLECHAS PARA JUGAR</p> 
@@ -52,12 +54,10 @@ function createSplashScreen() {
           <div><button id="start-button" onClick="playMusic()">START</button></div>
       </main>
   `);
-  
     document.body.appendChild(splashScreen);
     const startButton = splashScreen.querySelector("button");
     startButton.addEventListener("click", startGame);
 }
-
 // function playClick(){  // sonido calavera colision
 //     audioClick.currenTime = 0;
 //     audioClick.play();
@@ -68,7 +68,6 @@ function playMusic(){
     audio.volume = 0.1;
     audio.play();
 }
-
 function stopMusic(){
     audio.pause();
     audioGameOver.pause();
@@ -77,11 +76,9 @@ function stopMusic(){
 let audio = new Audio("audio/nightrain.mp3"); //AUDIO GAME
 // let audioGameOver = new Audio("audio/lesion_x_bad_feelings_cut.mp3"); //AUDIO GAMOVER
 // let audioClick = new Audio("audio/diablo_2_skull_gem_sound.mp3") //AUDIO COLISION
-
 function removeSplashScreen() {
     splashScreen.remove();
 }
-
 function startGame() {
     removeSplashScreen();
     // if (gameOverScreen) {
@@ -94,36 +91,32 @@ function startGame() {
     // game.start();
 }
 
-
 function createGameScreen() {
-
+    
     gameScreen = buildDom(`
-      <main class="game container">
-          <header id="countdown">
-              <canvas id="canvas" width="500" height="500" style="background: url('img/arena.png')"> "El canvas no rula en tu burra" </canvas>
-              <div class="time">
-                  <span class="label"><b>TIME</b></span>
-                  <span class="value"></span>
-              </div>
-              <div>
-              <button id="play" onClick="playMusic()"><b>MUSIC ON</b></button>
-              <button id="stop" onClick="stopMusic()"><b>MUSIC OFF</b></button>
-              </div>
-          </header>
-      </main>
-  `);
-  document.body.appendChild(gameScreen);
+        <main>
+            <canvas id="canvas" width="500" height="500" style="background: url('img/arena.png')"> "El canvas no rula en tu burra" </canvas>
+            <header>
+                <div class="time">
+                    <span class="label"><b>TIME</b></span>
+                    <span class="value"></span>
+                </div>
+                <div>
+                    <button id="play" onClick="playMusic()"><b>MUSIC ON</b></button>
+                    <button id="stop" onClick="stopMusic()"><b>MUSIC OFF</b></button>
+                </div>
+            </header>
+        </main>
+`);
 
-  const musicOnButton = gameScreen.querySelector("#play");
-  musicOnButton.addEventListener("click", playMusic);
-  const musicOffButton = gameScreen.querySelector("#stop");
-  musicOffButton.addEventListener("click", stopMusic);
-
-  return gameScreen;
-
+    document.body.appendChild(gameScreen);
+    const musicOnButton = gameScreen.querySelector("#play");
+    musicOnButton.addEventListener("click", playMusic);
+    const musicOffButton = gameScreen.querySelector("#stop");
+    musicOffButton.addEventListener("click", stopMusic);
 }
-//   testButton.addEventListener("click", moverCabeza);
-//   const canvas = document.querySelector("#canvas");
+
+const canvas = document.querySelector("#canvas");
 //   const ctx = canvas.getContext("2d");
 
 //   canvas.style.backgroundColor = "green";
@@ -303,7 +296,7 @@ function createGameScreen() {
 /////window.addEventListener("load", cargaInicial);
 
 //window.addEventListener("keydown", moverCabeza);
-
+//testButton.addEventListener("click", moverCabeza);
 //-----------------------------------------------------------------
 
 window.addEventListener("load", createSplashScreen);
