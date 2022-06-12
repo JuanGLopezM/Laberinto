@@ -1,5 +1,7 @@
 body {
     font-family: sans-serif;
+    /* background: url('src/arenafondo.jpeg');  NO FUNCIONA
+       background-size: cover; */
   }
 canvas {
   padding: 0;
