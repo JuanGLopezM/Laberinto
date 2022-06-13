@@ -1,11 +1,30 @@
+//variables globalesrestart-btnrestart-btn
+
+let splashScreen = document.querySelector("#splash-screen");
+let gameOverScreen = document.querySelector("#gameover-screen");
+let winGameScreen = document.querySelector("#wingame-screen");
 const canvas = document.querySelector("#canvas");
+
+//para botones de restart y volver a menu
+const restartGame = document.getElementById("restart-btn");
+const goToMenu = document.getElementById("back-to-menu");
+const restartGame2 = document.getElementById("restart-btn2");
+const goToMenu2 = document.getElementById("back-to-menu2");
+//ctx
 const ctx = canvas.getContext("2d");
+// juego está activo o no
+let checkIfGameIsRunning = false;
 
-
-
-
-
-
+//Inicio juego-->mostrar canvas
+const startGame = () => {
+    checkIfGameIsRunning = true;
+    if (checkIfGameIsRunning) {
+      splashScreen.style.display = "none";
+      canvas.style.display = "flex";
+      gameOverScreen.style.display = "none";
+      winGameScreen.style.display = "none";
+    }
+};
 
 //imagen cabeza
 let cabezaImagen = new Image();
@@ -138,7 +157,8 @@ const cargaInicial = () => {
 //detectando colisiones-->gameOver, incluye win
 const jugar = () => {
     if (cabeza.detectarColision(pared1)) {
-       alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
        gameOver = true 
        if(gameOver){
            clearInterval(limpiarInterval);
@@ -153,7 +173,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared2)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -164,7 +185,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared3)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -175,7 +197,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared4)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -186,7 +209,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared5)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -197,7 +221,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared6)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -208,7 +233,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared7)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -219,7 +245,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared8)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -230,7 +257,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared9)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -241,7 +269,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared10)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -252,7 +281,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared11)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -263,7 +293,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared12)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -274,7 +305,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared13)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -285,7 +317,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared14)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -296,7 +329,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared15)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -307,7 +341,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared16)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -318,7 +353,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared17)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -329,7 +365,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared18)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -340,7 +377,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared19)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -351,7 +389,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared20)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -362,7 +401,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared21)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -373,7 +413,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared22)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -384,7 +425,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared23)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -395,7 +437,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared24)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -406,7 +449,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared25)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -417,7 +461,8 @@ const jugar = () => {
         }
     }
     else if (cabeza.detectarColision(pared26)) {
-        alert ("Has muerto. Suerte la próxima vez");
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -429,7 +474,8 @@ const jugar = () => {
     }
 
     else if (cabeza.x == 1100 && cabeza.y > 140 && cabeza.y < 230) {
-        alert ("¡Enhorabuena! ¡Has llegado! ¡Ya estás preparado para ir al Ikea!");
+        canvas.style.display = "none";
+        winGameScreen.style.display = "flex";
         gameOver = true 
         if(gameOver){
            clearInterval(limpiarInterval);
@@ -465,6 +511,27 @@ const moverCabeza = (e) => {
     }
     cabeza.dibujar();
 };
+
+let startButton = document.querySelector("#start-btn");
+startButton.addEventListener("click", startGame);
+
+restartGame.addEventListener("click", () => {
+    checkIfGameIsRunning = false;
+    startGame();
+});
+  
+goToMenu.addEventListener("click", () => {
+    window.location.reload();
+});
+
+restartGame2.addEventListener("click", () => {
+    checkIfGameIsRunning = false;
+    startGame();
+});
+  
+goToMenu2.addEventListener("click", () => {
+    window.location.reload();
+});
 
 window.addEventListener("load", cargaInicial);
 
