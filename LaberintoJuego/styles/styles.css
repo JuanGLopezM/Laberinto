@@ -22,7 +22,7 @@ canvas {
   left: 0;
   right: 0;
 }
-#start-btn, #restart-btn, #back-to-menu, #restart-btn2, #back-to-menu2 {
+#start-btn, #back-to-menu, #back-to-menu2, #how-to-play, #sound-settings, #back-to-menu3 {
   background-color: rgb(0, 0, 0);
   color: white;
   padding: 20px;
@@ -30,6 +30,6 @@ canvas {
   margin-top: 40px;
   border-radius: 10px; 
 }
-#canvas, #gameover-screen, #wingame-screen {
+#canvas, #gameover-screen, #wingame-screen, #howtoplay-screen{
   display: none;
 }

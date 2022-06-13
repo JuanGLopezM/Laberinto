@@ -3,13 +3,21 @@
 let splashScreen = document.querySelector("#splash-screen");
 let gameOverScreen = document.querySelector("#gameover-screen");
 let winGameScreen = document.querySelector("#wingame-screen");
+let howToPlayScreen = document.querySelector("#howtoplay-screen");
+let howToPlayButton = document.querySelector("#how-to-play");
+let startButton = document.querySelector("#start-btn");
 const canvas = document.querySelector("#canvas");
 
-//para botones de restart y volver a menu
-const restartGame = document.getElementById("restart-btn");
+//const audio = document.getElementById(".....");
+
+
+//para botones de restart y volver a menu (restart comentados porque no reincian las colisiones)
+//const restartGame = document.getElementById("restart-btn");
 const goToMenu = document.getElementById("back-to-menu");
-const restartGame2 = document.getElementById("restart-btn2");
+//const restartGame2 = document.getElementById("restart-btn2");
 const goToMenu2 = document.getElementById("back-to-menu2");
+const goToHowToPlay = document.getElementById("how-to-play-screen");
+const goToMenu3 = document.getElementById("back-to-menu3");
 //ctx
 const ctx = canvas.getContext("2d");
 // juego está activo o no
@@ -26,31 +34,39 @@ const startGame = () => {
     }
 };
 
+const startHowToPlay = () => {
+    splashScreen.style.display = "none";
+    canvas.style.display = "none";
+    gameOverScreen.style.display = "none";
+    winGameScreen.style.display = "none";
+    howToPlayScreen.style.display = "flex"
+}
+
 //imagen cabeza
 let cabezaImagen = new Image();
 cabezaImagen.src = "img/cabeza2.png";
 
 //imagenes muros exteriores
 let pared450x30Imagen = new Image();
-pared450x30Imagen.src = "img/pared450x30.png";
+pared450x30Imagen.src = "img/paredesexternas/pared450x30.png";
 
 let pared1140x30Imagen = new Image();
-pared1140x30Imagen.src = "img/pared1140x30.png";
+pared1140x30Imagen.src = "img/paredesexternas/pared1140x30.png";
 
 let pared30x640Imagen = new Image();
-pared30x640Imagen.src = "img/pared30x640.png";
+pared30x640Imagen.src = "img/paredesexternas/pared30x640.png";
 
 let pared30x110Imagen = new Image();
-pared30x110Imagen.src = "img/pared30x110.png";
+pared30x110Imagen.src = "img/paredesexternas/pared30x110.png";
 
 let pared30x440Imagen = new Image();
-pared30x440Imagen.src = "img/pared30x440.png";
+pared30x440Imagen.src = "img/paredesexternas/pared30x440.png";
 
 let pared360x30Imagen = new Image();
-pared360x30Imagen.src = "img/pared360x30.png";
+pared360x30Imagen.src = "img/paredesexternas/pared360x30.png";
 
 let pared690x30Imagen = new Image();
-pared690x30Imagen.src = "img/pared690x30.png";
+pared690x30Imagen.src = "img/paredesexternas/pared690x30.png";
 
 //imagenes muros anchos
 let pared110x20Imagen = new Image();
@@ -85,7 +101,7 @@ pared20x130Imagen.src = "img/paredesaltas/pared20x130.png";
 let pared20x200Imagen = new Image();
 pared20x200Imagen.src = "img/paredesaltas/pared20x200.png";
 
-let gameOver = false
+
 
 let limpiarInterval; 
 
@@ -151,339 +167,119 @@ const cargaInicial = () => {
     pared24.dibujar();
     pared25.dibujar();
     pared26.dibujar();
-    limpiarInterval = setInterval(jugar, 10);
+    limpiarInterval = setInterval(colisiones, 10);
 };
 
 //detectando colisiones-->gameOver, incluye win
-const jugar = () => {
+const colisiones = () => {
     if (cabeza.detectarColision(pared1)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-       gameOver = true 
-       if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-           
-           // seria ir a la página de inicio
-
-           // Ocultar el canvas 
-        }
     }
     else if (cabeza.detectarColision(pared2)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared3)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared4)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared5)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared6)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared7)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared8)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared9)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared10)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared11)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared12)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared13)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared14)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared15)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared16)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared17)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared18)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared19)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared20)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared21)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared22)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared23)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared24)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared25)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
     else if (cabeza.detectarColision(pared26)) {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
 
     else if (cabeza.x == 1100 && cabeza.y > 140 && cabeza.y < 230) {
         canvas.style.display = "none";
         winGameScreen.style.display = "flex";
-        gameOver = true 
-        if(gameOver){
-           clearInterval(limpiarInterval);
-           cabeza.borrar();
-           cabeza.x = 380;
-           cabeza.y = 650;
-           cabeza.dibujar();
-        }
     }
 }
 
@@ -508,31 +304,38 @@ const moverCabeza = (e) => {
         if (cabeza.y < 660) {
             cabeza.y += 5;
         }
-    }
+
+    e.preventDefault();}  //previene que se mueva la pantalla con las teclas de flechas
+
     cabeza.dibujar();
 };
 
-let startButton = document.querySelector("#start-btn");
 startButton.addEventListener("click", startGame);
 
-restartGame.addEventListener("click", () => {
-    checkIfGameIsRunning = false;
-    startGame();
-});
+howToPlayButton.addEventListener("click", startHowToPlay);
+
+// restartGame.addEventListener("click", () => {
+//     checkIfGameIsRunning = false;
+//     startGame();
+// });
   
 goToMenu.addEventListener("click", () => {
     window.location.reload();
 });
 
-restartGame2.addEventListener("click", () => {
-    checkIfGameIsRunning = false;
-    startGame();
-});
+// restartGame2.addEventListener("click", () => {
+//     checkIfGameIsRunning = false;
+//     startGame();
+// });
   
 goToMenu2.addEventListener("click", () => {
     window.location.reload();
 });
 
+
+goToMenu3.addEventListener("click", () => {
+    window.location.reload();
+});
 window.addEventListener("load", cargaInicial);
 
 window.addEventListener("keydown", moverCabeza);
