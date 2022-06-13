@@ -103,7 +103,39 @@ const pared24 = new Objeto (780, 140, 20, 200, pared20x200Imagen, ctx);
 const pared25 = new Objeto (890, 250, 20, 90, pared20x90Imagen, ctx);
 const pared26 = new Objeto (1000, 340, 20, 110, pared20x110Imagen, ctx);
 
+//cargando imagenes e iniciando interval
+const cargaInicial = () => {
+    cabeza.dibujar();
+    pared1.dibujar();
+    pared2.dibujar();
+    pared3.dibujar();
+    pared4.dibujar();
+    pared5.dibujar();
+    pared6.dibujar();
+    pared7.dibujar();
+    pared8.dibujar();
+    pared9.dibujar();
+    pared10.dibujar();
+    pared11.dibujar();
+    pared12.dibujar();
+    pared13.dibujar();
+    pared14.dibujar();
+    pared15.dibujar();
+    pared16.dibujar();
+    pared17.dibujar();
+    pared18.dibujar();
+    pared19.dibujar();
+    pared20.dibujar();
+    pared21.dibujar();
+    pared22.dibujar();
+    pared23.dibujar();
+    pared24.dibujar();
+    pared25.dibujar();
+    pared26.dibujar();
+    limpiarInterval = setInterval(jugar, 10);
+};
 
+//detectando colisiones-->gameOver, incluye win
 const jugar = () => {
     if (cabeza.detectarColision(pared1)) {
        alert ("Has muerto. Suerte la próxima vez");
@@ -407,40 +439,9 @@ const jugar = () => {
            cabeza.dibujar();
         }
     }
-
 }
 
-const cargaInicial = () => {
-    cabeza.dibujar();
-    pared1.dibujar();
-    pared2.dibujar();
-    pared3.dibujar();
-    pared4.dibujar();
-    pared5.dibujar();
-    pared6.dibujar();
-    pared7.dibujar();
-    pared8.dibujar();
-    pared9.dibujar();
-    pared10.dibujar();
-    pared11.dibujar();
-    pared12.dibujar();
-    pared13.dibujar();
-    pared14.dibujar();
-    pared15.dibujar();
-    pared16.dibujar();
-    pared17.dibujar();
-    pared18.dibujar();
-    pared19.dibujar();
-    pared20.dibujar();
-    pared21.dibujar();
-    pared22.dibujar();
-    pared23.dibujar();
-    pared24.dibujar();
-    pared25.dibujar();
-    pared26.dibujar();
-    limpiarInterval = setInterval(jugar, 10);
-};
-
+//movimiento cabeza
 const moverCabeza = (e) => {
     cabeza.borrar();
     if (e.key === "ArrowLeft") {
