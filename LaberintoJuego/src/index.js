@@ -1,23 +1,22 @@
-//variables globalesrestart-btnrestart-btn
-
+//variables globales
 let splashScreen = document.querySelector("#splash-screen");
 let gameOverScreen = document.querySelector("#gameover-screen");
 let winGameScreen = document.querySelector("#wingame-screen");
 let howToPlayScreen = document.querySelector("#howtoplay-screen");
-let howToPlayButton = document.querySelector("#how-to-play");
-let startButton = document.querySelector("#start-btn");
 const canvas = document.querySelector("#canvas");
 
 //const audio = document.getElementById(".....");
 
 
-//para botones de restart y volver a menu (restart comentados porque no reincian las colisiones)
-//const restartGame = document.getElementById("restart-btn");
+//botones (restart comentados porque no reincian las colisiones)
+let startButton = document.querySelector("#start-btn");
+let howToPlayButton = document.querySelector("#how-to-play");
 const goToMenu = document.getElementById("back-to-menu");
-//const restartGame2 = document.getElementById("restart-btn2");
 const goToMenu2 = document.getElementById("back-to-menu2");
 const goToHowToPlay = document.getElementById("how-to-play-screen");
 const goToMenu3 = document.getElementById("back-to-menu3");
+//const restartGame = document.getElementById("restart-btn");
+//const restartGame2 = document.getElementById("restart-btn2");
 //ctx
 const ctx = canvas.getContext("2d");
 // juego está activo o no
@@ -33,7 +32,7 @@ const startGame = () => {
       winGameScreen.style.display = "none";
     }
 };
-
+//Pantalla Cómo jugar
 const startHowToPlay = () => {
     splashScreen.style.display = "none";
     canvas.style.display = "none";
@@ -44,7 +43,7 @@ const startHowToPlay = () => {
 
 //imagen cabeza
 let cabezaImagen = new Image();
-cabezaImagen.src = "img/cabeza2.png";
+cabezaImagen.src = "img/cabeza.png";
 
 //imagenes muros exteriores
 let pared450x30Imagen = new Image();
@@ -101,7 +100,12 @@ pared20x130Imagen.src = "img/paredesaltas/pared20x130.png";
 let pared20x200Imagen = new Image();
 pared20x200Imagen.src = "img/paredesaltas/pared20x200.png";
 
+//imágen pinchos
 
+let pinchosImagen = new Image();
+pinchosImagen.src = "img/pinchos.png";
+
+//variable para retear intervalo
 
 let limpiarInterval; 
 
@@ -137,6 +141,14 @@ const pared23 = new Objeto (780, 580, 20, 90, pared20x90Imagen, ctx);
 const pared24 = new Objeto (780, 140, 20, 200, pared20x200Imagen, ctx);
 const pared25 = new Objeto (890, 250, 20, 90, pared20x90Imagen, ctx);
 const pared26 = new Objeto (1000, 340, 20, 110, pared20x110Imagen, ctx);
+//pinchos
+const pinchos1 = new Objeto (150, 590, 100, 70, pinchosImagen, ctx);
+const pinchos2 = new Objeto (700, 480, 100, 70, pinchosImagen, ctx);
+const pinchos3 = new Objeto (590, 370, 100, 70, pinchosImagen, ctx);
+const pinchos4 = new Objeto (470, 150, 100, 70, pinchosImagen, ctx);
+const pinchos5 = new Objeto (100, 370, 100, 70, pinchosImagen, ctx);
+const pinchos6 = new Objeto (970, 40, 100, 70, pinchosImagen, ctx);
+let estanPinchosActivos = false
 
 //cargando imagenes e iniciando interval
 const cargaInicial = () => {
@@ -166,11 +178,37 @@ const cargaInicial = () => {
     pared23.dibujar();
     pared24.dibujar();
     pared25.dibujar();
-    pared26.dibujar();
+    pared26.dibujar(); 
+    intervaloPinchos();
     limpiarInterval = setInterval(colisiones, 10);
 };
 
-//detectando colisiones-->gameOver, incluye win
+//Parpadeo pinchos
+alternar =()=> {
+    if (estanPinchosActivos === true){
+        console.log("entra")
+        pinchos1.borrar();
+        pinchos2.borrar();
+        pinchos3.borrar();
+        pinchos4.borrar();
+        pinchos5.borrar();
+        pinchos6.borrar();
+        estanPinchosActivos = false
+    } else if (estanPinchosActivos === false){
+        pinchos1.dibujar();
+        pinchos2.dibujar();
+        pinchos3.dibujar();
+        pinchos4.dibujar();
+        pinchos5.dibujar();
+        pinchos6.dibujar();
+        estanPinchosActivos = true
+    }
+}
+function intervaloPinchos () {
+    setInterval(alternar, 4000)
+}
+
+//Detectando colisiones-->gameOver, incluye win
 const colisiones = () => {
     if (cabeza.detectarColision(pared1)) {
         canvas.style.display = "none";
@@ -277,13 +315,39 @@ const colisiones = () => {
         gameOverScreen.style.display = "flex";
     }
 
-    else if (cabeza.x == 1100 && cabeza.y > 140 && cabeza.y < 230) {
+    else if (estanPinchosActivos && cabeza.detectarColision(pinchos1)) {
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
+    }
+    else if (estanPinchosActivos && cabeza.detectarColision(pinchos2)) {
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
+    }
+    else if (estanPinchosActivos && cabeza.detectarColision(pinchos3)) {
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
+    }
+    else if (estanPinchosActivos && cabeza.detectarColision(pinchos4)) {
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
+    }
+    else if (estanPinchosActivos && cabeza.detectarColision(pinchos5)) {
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
+    }
+    else if (estanPinchosActivos && cabeza.detectarColision(pinchos6)) {
+        canvas.style.display = "none";
+        gameOverScreen.style.display = "flex";
+    }   
+
+    else if (cabeza.x == 1100 && cabeza.y > 140 && cabeza.y < 230) {  //tester wingame (cabeza.y == 640)
         canvas.style.display = "none";
         winGameScreen.style.display = "flex";
-    }
 }
 
-//movimiento cabeza
+}
+
+//viejo movimiento cabeza
 const moverCabeza = (e) => {
     cabeza.borrar();
     if (e.key === "ArrowLeft") {
@@ -311,15 +375,18 @@ const moverCabeza = (e) => {
 };
 
 startButton.addEventListener("click", startGame);
-
 howToPlayButton.addEventListener("click", startHowToPlay);
 
-// restartGame.addEventListener("click", () => {
-//     checkIfGameIsRunning = false;
-//     startGame();
-// });
+
   
 goToMenu.addEventListener("click", () => {
+    window.location.reload();
+});
+goToMenu2.addEventListener("click", () => {
+    window.location.reload();
+});
+
+goToMenu3.addEventListener("click", () => {
     window.location.reload();
 });
 
@@ -327,15 +394,12 @@ goToMenu.addEventListener("click", () => {
 //     checkIfGameIsRunning = false;
 //     startGame();
 // });
+// restartGame.addEventListener("click", () => {
+//     checkIfGameIsRunning = false;
+//     startGame();
+// });
   
-goToMenu2.addEventListener("click", () => {
-    window.location.reload();
-});
 
-
-goToMenu3.addEventListener("click", () => {
-    window.location.reload();
-});
 window.addEventListener("load", cargaInicial);
 
 window.addEventListener("keydown", moverCabeza);

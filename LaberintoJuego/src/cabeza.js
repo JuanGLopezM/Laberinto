@@ -1,7 +1,7 @@
 
 
-var canvas = document.querySelector("#myCanvas");
-var context = canvas.getContext("2d");
+// var canvas = document.querySelector("#myCanvas");
+// var context = canvas.getContext("2d");
  
 function drawTriangle() {
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -12,14 +12,7 @@ function drawTriangle() {
   context.lineTo(230 + deltaX, 150 + deltaY);
   context.closePath();
  
-  // the outline
-  context.lineWidth = 10;
-  context.strokeStyle = "rgba(102, 102, 102, 1)";
-  context.stroke();
- 
-  // the fill color
-  context.fillStyle = "rgba(255, 204, 0, 1)";
-  context.fill();
+  // llamar imagen
 }
 drawTriangle();
 
