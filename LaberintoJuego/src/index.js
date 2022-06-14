@@ -3,6 +3,7 @@ let splashScreen = document.querySelector("#splash-screen");
 let gameOverScreen = document.querySelector("#gameover-screen");
 let winGameScreen = document.querySelector("#wingame-screen");
 let howToPlayScreen = document.querySelector("#howtoplay-screen");
+let soundSettingScreen = document.querySelector("#soundsetting-screen");
 const canvas = document.querySelector("#canvas");
 
 //const audio = document.getElementById(".....");
@@ -11,10 +12,14 @@ const canvas = document.querySelector("#canvas");
 //botones (restart comentados porque no reincian las colisiones)
 let startButton = document.querySelector("#start-btn");
 let howToPlayButton = document.querySelector("#how-to-play");
+let soundSettingButton = document.querySelector("#sound-setting");
 const goToMenu = document.getElementById("back-to-menu");
 const goToMenu2 = document.getElementById("back-to-menu2");
 const goToHowToPlay = document.getElementById("how-to-play-screen");
 const goToMenu3 = document.getElementById("back-to-menu3");
+const goToMenu4 = document.getElementById("back-to-menu4");
+const soundOn = document.getElementById("sound-on");
+const soundOff = document.getElementById("sound-off");
 //const restartGame = document.getElementById("restart-btn");
 //const restartGame2 = document.getElementById("restart-btn2");
 //ctx
@@ -28,27 +33,24 @@ const startGame = () => {
     if (checkIfGameIsRunning) {
       splashScreen.style.display = "none";
       canvas.style.display = "flex";
-      gameOverScreen.style.display = "none";
-      winGameScreen.style.display = "none";
     }
 };
 //Pantalla Cómo jugar
 const startHowToPlay = () => {
     splashScreen.style.display = "none";
-    canvas.style.display = "none";
-    gameOverScreen.style.display = "none";
-    winGameScreen.style.display = "none";
     howToPlayScreen.style.display = "flex"
 }
+const startSoundSetting = () => {
+    splashScreen.style.display = "none";
+    soundSettingScreen.style.display = "flex"
+}
+
 
 //imagen cabeza
 let cabezaImagen = new Image();
 cabezaImagen.src = "img/cabeza.png";
 
 //imagenes muros exteriores
-let pared450x30Imagen = new Image();
-pared450x30Imagen.src = "img/paredesexternas/pared450x30.png";
-
 let pared1140x30Imagen = new Image();
 pared1140x30Imagen.src = "img/paredesexternas/pared1140x30.png";
 
@@ -205,7 +207,7 @@ alternar =()=> {
     }
 }
 function intervaloPinchos () {
-    setInterval(alternar, 4000)
+    setInterval(alternar, 3000)
 }
 
 //Detectando colisiones-->gameOver, incluye win
@@ -339,15 +341,13 @@ const colisiones = () => {
         canvas.style.display = "none";
         gameOverScreen.style.display = "flex";
     }   
-
     else if (cabeza.x == 1100 && cabeza.y > 140 && cabeza.y < 230) {  //tester wingame (cabeza.y == 640)
         canvas.style.display = "none";
         winGameScreen.style.display = "flex";
+    } 
 }
 
-}
-
-//viejo movimiento cabeza
+//movimiento cabeza
 const moverCabeza = (e) => {
     cabeza.borrar();
     if (e.key === "ArrowLeft") {
@@ -376,8 +376,7 @@ const moverCabeza = (e) => {
 
 startButton.addEventListener("click", startGame);
 howToPlayButton.addEventListener("click", startHowToPlay);
-
-
+soundSettingButton.addEventListener("click", startSoundSetting);
   
 goToMenu.addEventListener("click", () => {
     window.location.reload();
@@ -387,6 +386,9 @@ goToMenu2.addEventListener("click", () => {
 });
 
 goToMenu3.addEventListener("click", () => {
+    window.location.reload();
+});
+goToMenu4.addEventListener("click", () => {
     window.location.reload();
 });
 
