@@ -19,9 +19,36 @@ const soundOn = document.getElementById("sound-on");
 const soundOff = document.getElementById("sound-off");
 
 // Sonidos
+const sonido1 = new Audio("audio/skull.mp3");
+const musica1 = new Audio("audio/townhall.mp3");
 // const audio = document.getElementById(".....");
 // const audio = document.getElementById(".....");
 // ...
+
+function playSonido1() {
+  if ((sonidoOnOff = true)) {
+    sonido1.currentTime = 0;
+    sonido1.volume = 1;
+    sonido1.play();
+  }
+}
+function playMusica1() {
+  musica1.currentTime = 0;
+  musica1.volume = 1;
+  musica1.loop = true;
+  musica1.play();
+}
+function stopMusica1() {
+  musica1.pause();
+}
+
+let sonidoOnOff = true;
+function stopAllSounds() {
+  sonidoOnOff = false;
+}
+function playAllSounds() {
+  sonidoOnOff = true;
+}
 
 // ctx
 const ctx = canvas.getContext("2d");
@@ -254,103 +281,136 @@ const colisiones = () => {
   if (cabeza.detectarColision(pared1)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared2)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared3)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared4)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared5)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared6)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared7)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared8)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared9)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared10)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared11)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared12)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared13)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared14)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared15)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared16)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared17)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared18)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared19)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared20)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared21)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared22)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared23)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared24)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared25)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.detectarColision(pared26)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (estanPinchosActivos && cabeza.detectarColision(pinchos1)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (estanPinchosActivos && cabeza.detectarColision(pinchos2)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (estanPinchosActivos && cabeza.detectarColision(pinchos3)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (estanPinchosActivos && cabeza.detectarColision(pinchos4)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (estanPinchosActivos && cabeza.detectarColision(pinchos5)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (estanPinchosActivos && cabeza.detectarColision(pinchos6)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
+    stopMusica1();
   } else if (cabeza.x == 1100 && cabeza.y > 140 && cabeza.y < 230) {
     //tester wingame (cabeza.y == 640)
     canvas.style.display = "none";
     winGameScreen.style.display = "flex";
+    stopMusica1();
   }
 };
 
@@ -385,6 +445,8 @@ const moverCabeza = (e) => {
 startButton.addEventListener("click", startGame);
 howToPlayButton.addEventListener("click", startHowToPlay);
 soundSettingButton.addEventListener("click", startSoundSetting);
+// soundOff.addEventListener("click", stopAllSounds);
+// soundOn.addEventListener("click", playAllSounds);
 
 goToMenu.addEventListener("click", () => {
   window.location.reload();
