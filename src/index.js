@@ -40,8 +40,8 @@ function stopMusicaJuego() {
   musicaJuego.pause();
 }
 function playMusicaInicio() {
-  musicaInicio.currentTime = 120;
-  musicaInicio.volume = 0.2;
+  musicaInicio.currentTime = 135;
+  musicaInicio.volume = 0.4;
   musicaInicio.loop = true;
   musicaInicio.play();
 }
@@ -146,13 +146,13 @@ let pared1140x30Imagen = new Image();
 pared1140x30Imagen.src = "img/paredesexternas/muro1140x30.jpg";
 
 let pared30x640Imagen = new Image();
-pared30x640Imagen.src = "img/paredesexternas/pared30x640.png";
+pared30x640Imagen.src = "img/paredesexternas/muro30x640.png";
 
 let pared30x110Imagen = new Image();
-pared30x110Imagen.src = "img/paredesexternas/pared30x110.png";
+pared30x110Imagen.src = "img/paredesexternas/muro30x110.png";
 
 let pared30x440Imagen = new Image();
-pared30x440Imagen.src = "img/paredesexternas/pared30x440.png";
+pared30x440Imagen.src = "img/paredesexternas/muro30x440.png";
 
 let pared360x30Imagen = new Image();
 pared360x30Imagen.src = "img/paredesexternas/muro360x30.png";
@@ -171,10 +171,10 @@ let pared220x20Imagen = new Image();
 pared220x20Imagen.src = "img/paredesanchas/pared220x20.png";
 
 let pared240x20Imagen = new Image();
-pared240x20Imagen.src = "img/paredesanchas/pared240x20.png";
+pared240x20Imagen.src = "img/paredesanchas/muro240x20.png";
 
 let pared350x20Imagen = new Image();
-pared350x20Imagen.src = "img/paredesanchas/pared350x20.png";
+pared350x20Imagen.src = "img/paredesanchas/muro350x20.png";
 
 let pared900x20Imagen = new Image();
 pared900x20Imagen.src = "img/paredesanchas/pared900x20.png";
@@ -591,23 +591,28 @@ const moverCabeza = (e) => {
     if (cabeza.x > 0) {
       cabeza.x -= 10;
     }
+    e.preventDefault();
   }
   if (e.key === "ArrowRight") {
     if (cabeza.x < 1100) {
       cabeza.x += 10;
     }
+    e.preventDefault();
   }
   if (e.key === "ArrowUp") {
     if (cabeza.y > 0) {
       cabeza.y -= 10;
     }
+    e.preventDefault();
   }
   if (e.key === "ArrowDown") {
     if (cabeza.y < 660) {
       cabeza.y += 10;
     }
+
+    e.preventDefault();
   }
-  e.preventDefault(); //previene que se mueva la pantalla con las teclas de las flechas
+  //previene que se mueva la pantalla con las teclas de las flechas
   cabeza.dibujar();
 };
 
