@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Laberinto</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+
+  <body>
+    <div class="container">
+
+      <!-- SPLASH SCREEN -->
+      <div id="splash-screen" class="container">
+        <img src="img/logo.png" width="500" alt="logo">
+        <button id="start-btn" onClick="playSonidoJugar(), playMusicaJuego()">JUGAR</button>
+        <button id="how-to-play" onClick="playSonido1(), playMusica1()">COMO JUGAR</button>
+        <button id="sound-setting">SONIDO</button>
+      </div>
+  
+      <!-- GAME SCREEN -->
+      <canvas id="canvas" width="1140" height="700 " style="background: url('img/arena.png')"> "El canvas no rula en tu burra" </canvas> 
+  
+      <!-- GAME OVER SCREEN --> 
+      <div id="gameover-screen" class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <img src="img/gameover.png" width="500" alt="logo">
+        <button id="back-to-menu">VOLVER AL MENU</button>
+      </div>
+
+      <!-- WIN GAME SCREEN -->
+      <div id="wingame-screen" class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <img src="img/enhorabuena.png" width="500" alt="logo">
+        <img src="img/llegado.png" width="500" alt="logo">
+        <img src="img/ikea.png" width="500" alt="logo">
+        <button id="back-to-menu2">VOLVER AL MENU</button>
+      </div>
+      <!-- HOW TO PLAY SCREEN -->
+      <div id="howtoplay-screen" class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <img src="img/instrucciones.png" width="500" alt="logo">
+        <br>
+        <button id="back-to-menu3">VOLVER AL MENU</button>
+      </div>
+
+      <!-- SOUND SETTING SCREEN -->
+      <div id="soundsetting-screen" class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <button id="musica-on" onClick="playAllSounds()">MUSICA ON</button>
+        <button id="musica-off" onClick="stopAllSounds()">MUSICA OFF</button>
+        <button id="back-to-menu4">VOLVER AL MENU</button>
+      </div>
+    </div>
+   
+    <script src="src/Objeto.js"></script>
+    <script src="src/index.js"></script>
+  </body>
+</html>

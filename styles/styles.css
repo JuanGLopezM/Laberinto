@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: url('../img/maze.png') no-repeat;
+    background-size: cover;
+  }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+canvas {
+  padding: 0;
+  margin: auto;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+#start-btn, #back-to-menu, #back-to-menu2, #how-to-play, #sound-setting, #back-to-menu3, #back-to-menu4, #musica-on, #musica-off  {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  padding: 20px;
+  font-size: 30px;
+  margin-top: 40px;
+  border-radius: 10px; 
+}
+#canvas, #gameover-screen, #wingame-screen, #howtoplay-screen, #soundsetting-screen{
+  display: none;
+}
