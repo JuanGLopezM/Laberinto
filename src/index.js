@@ -41,7 +41,7 @@ function stopMusicaJuego() {
 }
 function playMusicaInicio() {
   musicaInicio.currentTime = 135;
-  musicaInicio.volume = 0.4;
+  musicaInicio.volume = 1;
   musicaInicio.loop = true;
   musicaInicio.play();
 }
@@ -50,7 +50,7 @@ function stopMusicaInicio() {
 }
 function playMusicaGameOver() {
   musicaGameOver.currentTime = 10;
-  musicaGameOver.volume = 0.5;
+  musicaGameOver.volume = 0.6;
   musicaGameOver.play();
 }
 function stopMusicaGameOver() {
@@ -75,7 +75,7 @@ function playSonidoJugar() {
 function playSonidoBotones() {
   if ((sonidoOnOff = true)) {
     sonidoBotones.currentTime = 0;
-    sonidoBotones.volume = 0.1;
+    sonidoBotones.volume = 0.4;
     sonidoBotones.play();
   }
 }
@@ -162,13 +162,13 @@ pared690x30Imagen.src = "img/paredesexternas/muro690x30.png";
 
 // Imágenes muros anchos
 let pared110x20Imagen = new Image();
-pared110x20Imagen.src = "img/paredesanchas/pared110x20.png";
+pared110x20Imagen.src = "img/paredesanchas/muro110x20.png";
 
 let pared130x20Imagen = new Image();
-pared130x20Imagen.src = "img/paredesanchas/pared130x20.png";
+pared130x20Imagen.src = "img/paredesanchas/muro130x20.png";
 
 let pared220x20Imagen = new Image();
-pared220x20Imagen.src = "img/paredesanchas/pared220x20.png";
+pared220x20Imagen.src = "img/paredesanchas/muro220x20.png";
 
 let pared240x20Imagen = new Image();
 pared240x20Imagen.src = "img/paredesanchas/muro240x20.png";
@@ -177,21 +177,21 @@ let pared350x20Imagen = new Image();
 pared350x20Imagen.src = "img/paredesanchas/muro350x20.png";
 
 let pared900x20Imagen = new Image();
-pared900x20Imagen.src = "img/paredesanchas/pared900x20.png";
+pared900x20Imagen.src = "img/paredesanchas/muro900x20.png";
 
 // Imágenes muros altos
 
 let pared20x90Imagen = new Image();
-pared20x90Imagen.src = "img/paredesaltas/pared20x90.png";
+pared20x90Imagen.src = "img/paredesaltas/muro20x90.png";
 
 let pared20x110Imagen = new Image();
-pared20x110Imagen.src = "img/paredesaltas/pared20x110.png";
+pared20x110Imagen.src = "img/paredesaltas/muro20x110.png";
 
 let pared20x130Imagen = new Image();
-pared20x130Imagen.src = "img/paredesaltas/pared20x130.png";
+pared20x130Imagen.src = "img/paredesaltas/muro20x130.png";
 
 let pared20x200Imagen = new Image();
-pared20x200Imagen.src = "img/paredesaltas/pared20x200.png";
+pared20x200Imagen.src = "img/paredesaltas/muro20x200.png";
 
 // Imagen pinchos
 
