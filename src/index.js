@@ -3,7 +3,7 @@ let splashScreen = document.querySelector("#splash-screen");
 let gameOverScreen = document.querySelector("#gameover-screen");
 let winGameScreen = document.querySelector("#wingame-screen");
 let howToPlayScreen = document.querySelector("#howtoplay-screen");
-let soundSettingScreen = document.querySelector("#soundsetting-screen");
+//let soundSettingScreen = document.querySelector("#soundsetting-screen");
 const canvas = document.querySelector("#canvas");
 
 // Botones
@@ -132,10 +132,10 @@ const startHowToPlay = () => {
 };
 
 // Pantalla Sonido
-const startSoundSetting = () => {
-  splashScreen.style.display = "none";
-  soundSettingScreen.style.display = "flex";
-};
+// const startSoundSetting = () => {
+//   splashScreen.style.display = "none";
+//   soundSettingScreen.style.display = "flex";
+// };
 
 // Imagen cabeza
 let cabezaImagen = new Image();
@@ -143,7 +143,7 @@ cabezaImagen.src = "img/cabeza.png";
 
 // Imágenes muros exteriores
 let pared1140x30Imagen = new Image();
-pared1140x30Imagen.src = "img/paredesexternas/pared1140x30.png";
+pared1140x30Imagen.src = "img/paredesexternas/muro1140x30.jpg";
 
 let pared30x640Imagen = new Image();
 pared30x640Imagen.src = "img/paredesexternas/pared30x640.png";
@@ -155,10 +155,10 @@ let pared30x440Imagen = new Image();
 pared30x440Imagen.src = "img/paredesexternas/pared30x440.png";
 
 let pared360x30Imagen = new Image();
-pared360x30Imagen.src = "img/paredesexternas/pared360x30.png";
+pared360x30Imagen.src = "img/paredesexternas/muro360x30.png";
 
 let pared690x30Imagen = new Image();
-pared690x30Imagen.src = "img/paredesexternas/pared690x30.png";
+pared690x30Imagen.src = "img/paredesexternas/muro690x30.png";
 
 // Imágenes muros anchos
 let pared110x20Imagen = new Image();
@@ -614,7 +614,7 @@ const moverCabeza = (e) => {
 // Listeners
 startButton.addEventListener("click", startGame);
 howToPlayButton.addEventListener("click", startHowToPlay);
-soundSettingButton.addEventListener("click", startSoundSetting);
+//soundSettingButton.addEventListener("click", startSoundSetting);
 // soundOff.addEventListener("click", stopAllSounds);
 // soundOn.addEventListener("click", playAllSounds);
 
