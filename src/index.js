@@ -20,15 +20,15 @@ const soundOff = document.getElementById("sound-off");
 
 // Sonidos
 const musicaJuego = new Audio("audio/musicajuego.mp3");
-// const musicaGameOver = new Audio("audio/musicagameover.mp3");
-// const musicaWinGame = new Audio("audio/musicawingame.mp3");
-// const musicaInicio = new Audio("audio/musicainicio.mp3");
+const musicaGameOver = new Audio("audio/musicagameover.mp3");
+const musicaWinGame = new Audio("audio/musicawingame.mp3");
+const musicaInicio = new Audio("audio/musicainicio.mp3");
 
 const sonidoJugar = new Audio("audio/sonidojugar.mp3");
-// const sonidoBotones = new Audio("audio/sonidobotones.mp3");
-// const sonidoGameOver = new Audio("audio/sonidogameover.mp3");
-// const sonidoWinGame = new Audio("audio/sonidowingame.mp3");
-// const sonidoSonidoOff = new Audio("audio/sonidosonidooff.mp3");
+const sonidoBotones = new Audio("audio/sonidobotones.mp3");
+const sonidoGameOver = new Audio("audio/sonidogameover.mp3");
+const sonidoWinGame = new Audio("audio/sonidowingame.mp3");
+const sonidoSonidoOff = new Audio("audio/sonidosonidooff.mp3");
 
 function playMusicaJuego() {
   musicaJuego.currentTime = 0;
@@ -36,10 +36,34 @@ function playMusicaJuego() {
   musicaJuego.loop = true;
   musicaJuego.play();
 }
-function stopMusica1() {
+function stopMusicaJuego() {
   musicaJuego.pause();
 }
-
+function playMusicaInicio() {
+  musicaInicio.currentTime = 120;
+  musicaInicio.volume = 0.2;
+  musicaInicio.loop = true;
+  musicaInicio.play();
+}
+function stopMusicaInicio() {
+  musicaInicio.pause();
+}
+function playMusicaGameOver() {
+  musicaGameOver.currentTime = 10;
+  musicaGameOver.volume = 0.5;
+  musicaGameOver.play();
+}
+function stopMusicaGameOver() {
+  musicaGameOver.pause();
+}
+function playMusicaWinGame() {
+  musicaWinGame.currentTime = 0;
+  musicaWinGame.volume = 0.3;
+  musicaWinGame.play();
+}
+function stopMusicaWinGame() {
+  musicaWinGame.pause();
+}
 
 function playSonidoJugar() {
   if ((sonidoOnOff = true)) {
@@ -48,7 +72,34 @@ function playSonidoJugar() {
     sonidoJugar.play();
   }
 }
-
+function playSonidoBotones() {
+  if ((sonidoOnOff = true)) {
+    sonidoBotones.currentTime = 0;
+    sonidoBotones.volume = 0.1;
+    sonidoBotones.play();
+  }
+}
+function playSonidoSonidoOff() {
+  if ((sonidoOnOff = true)) {
+    sonidoSonidoOff.currentTime = 0;
+    sonidoSonidoOff.volume = 0.1;
+    sonidoSonidoOff.play();
+  }
+}
+function playSonidoGameOver() {
+  if ((sonidoOnOff = true)) {
+    sonidoGameOver.currentTime = 0;
+    sonidoGameOver.volume = 0.1;
+    sonidoGameOver.play();
+  }
+}
+function playSonidoWinGame() {
+  if ((sonidoOnOff = true)) {
+    sonidoWinGame.currentTime = 0;
+    sonidoWinGame.volume = 0.1;
+    sonidoWinGame.play();
+  }
+}
 
 let sonidoOnOff = true;
 function stopAllSounds() {
@@ -57,6 +108,8 @@ function stopAllSounds() {
 function playAllSounds() {
   sonidoOnOff = true;
 }
+
+//FIN MUSICA Y SONIDO
 
 // ctx
 const ctx = canvas.getContext("2d");
@@ -188,7 +241,9 @@ const pinchos3 = new Objeto(590, 370, 100, 70, pinchosImagen, ctx);
 const pinchos4 = new Objeto(470, 150, 100, 70, pinchosImagen, ctx);
 const pinchos5 = new Objeto(40, 370, 100, 70, pinchosImagen, ctx);
 const pinchos6 = new Objeto(1000, 40, 100, 70, pinchosImagen, ctx);
+
 let estanPinchosActivos = false;
+let estanPinchosActivos2 = false;
 
 // Cargando imágenes e iniciando intervalo
 const cargaInicial = () => {
@@ -220,33 +275,44 @@ const cargaInicial = () => {
   pared25.dibujar();
   pared26.dibujar();
   intervaloPinchos();
+  intervaloPinchos2();
   limpiarInterval = setInterval(colisiones, 10);
 };
 
 // Parpadeo pinchos
 alternar = () => {
   if (estanPinchosActivos === true) {
-    console.log("entra");
     pinchos1.borrar();
-    pinchos2.borrar();
     pinchos3.borrar();
     pinchos4.borrar();
-    pinchos5.borrar();
-    pinchos6.borrar();
     estanPinchosActivos = false;
   } else if (estanPinchosActivos === false) {
     pinchos1.dibujar();
-    pinchos2.dibujar();
     pinchos3.dibujar();
     pinchos4.dibujar();
-    pinchos5.dibujar();
-    pinchos6.dibujar();
     estanPinchosActivos = true;
   }
 };
+alternar2 = () => {
+  if (estanPinchosActivos2 === true) {
+    pinchos2.borrar();
+    pinchos5.borrar();
+    pinchos6.borrar();
+    estanPinchosActivos2 = false;
+  } else if (estanPinchosActivos2 === false) {
+    pinchos2.dibujar();
+    pinchos5.dibujar();
+    pinchos6.dibujar();
+    estanPinchosActivos2 = true;
+  }
+};
 function intervaloPinchos() {
-  setInterval(alternar, 3200);
+  setInterval(alternar, 3400);
 }
+function intervaloPinchos2() {
+  setInterval(alternar2, 4500);
+}
+
 // Intento de loop sobre las colisiones con las paredes
 // let paredes = [
 //     pared1,
@@ -289,67 +355,115 @@ const colisiones = () => {
   if (cabeza.detectarColision(pared1)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared2)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared3)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared4)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared5)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared6)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared7)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared8)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared9)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared10)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared11)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared12)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared13)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared14)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared15)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared16)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared17)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
@@ -357,68 +471,116 @@ const colisiones = () => {
   } else if (cabeza.detectarColision(pared18)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared19)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared20)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared21)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared22)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared23)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared24)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared25)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.detectarColision(pared26)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (estanPinchosActivos && cabeza.detectarColision(pinchos1)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (estanPinchosActivos && cabeza.detectarColision(pinchos2)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (estanPinchosActivos && cabeza.detectarColision(pinchos3)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (estanPinchosActivos && cabeza.detectarColision(pinchos4)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (estanPinchosActivos && cabeza.detectarColision(pinchos5)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (estanPinchosActivos && cabeza.detectarColision(pinchos6)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playSonidoGameOver();
+    playMusicaGameOver();
   } else if (cabeza.x == 1100 && cabeza.y > 140 && cabeza.y < 230) {
     //tester wingame (cabeza.y == 640)
     canvas.style.display = "none";
     winGameScreen.style.display = "flex";
-    stopMusica1();
+    clearInterval(limpiarInterval);
+    stopMusicaJuego();
+    playMusicaWinGame();
+    playSonidoWinGame();
   }
 };
 
