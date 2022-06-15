@@ -18,17 +18,11 @@ const goToMenu4 = document.getElementById("back-to-menu4");
 const soundOn = document.getElementById("sound-on");
 const soundOff = document.getElementById("sound-off");
 
-// Sonidos
+// Música y Sonidos
 const musicaJuego = new Audio("audio/musicajuego.mp3");
 const musicaGameOver = new Audio("audio/musicagameover.mp3");
 const musicaWinGame = new Audio("audio/musicawingame.mp3");
 const musicaInicio = new Audio("audio/musicainicio.mp3");
-
-const sonidoJugar = new Audio("audio/sonidojugar.mp3");
-const sonidoBotones = new Audio("audio/sonidobotones.mp3");
-const sonidoGameOver = new Audio("audio/sonidogameover.mp3");
-const sonidoWinGame = new Audio("audio/sonidowingame.mp3");
-const sonidoSonidoOff = new Audio("audio/sonidosonidooff.mp3");
 
 function playMusicaJuego() {
   musicaJuego.currentTime = 0;
@@ -39,6 +33,7 @@ function playMusicaJuego() {
 function stopMusicaJuego() {
   musicaJuego.pause();
 }
+
 function playMusicaInicio() {
   musicaInicio.currentTime = 135;
   musicaInicio.volume = 1;
@@ -48,6 +43,7 @@ function playMusicaInicio() {
 function stopMusicaInicio() {
   musicaInicio.pause();
 }
+
 function playMusicaGameOver() {
   musicaGameOver.currentTime = 10;
   musicaGameOver.volume = 0.6;
@@ -56,6 +52,7 @@ function playMusicaGameOver() {
 function stopMusicaGameOver() {
   musicaGameOver.pause();
 }
+
 function playMusicaWinGame() {
   musicaWinGame.currentTime = 0;
   musicaWinGame.volume = 0.3;
@@ -64,6 +61,12 @@ function playMusicaWinGame() {
 function stopMusicaWinGame() {
   musicaWinGame.pause();
 }
+
+const sonidoJugar = new Audio("audio/sonidojugar.mp3");
+const sonidoBotones = new Audio("audio/sonidobotones.mp3");
+const sonidoGameOver = new Audio("audio/sonidogameover.mp3");
+const sonidoWinGame = new Audio("audio/sonidowingame.mp3");
+const sonidoSonidoOff = new Audio("audio/sonidosonidooff.mp3");
 
 function playSonidoJugar() {
   if ((sonidoOnOff = true)) {
@@ -108,8 +111,6 @@ function stopAllSounds() {
 function playAllSounds() {
   sonidoOnOff = true;
 }
-
-//FIN MUSICA Y SONIDO
 
 // ctx
 const ctx = canvas.getContext("2d");
@@ -180,7 +181,6 @@ let pared900x20Imagen = new Image();
 pared900x20Imagen.src = "img/paredesanchas/muro900x20.png";
 
 // Imágenes muros altos
-
 let pared20x90Imagen = new Image();
 pared20x90Imagen.src = "img/paredesaltas/muro20x90.png";
 
@@ -194,12 +194,10 @@ let pared20x200Imagen = new Image();
 pared20x200Imagen.src = "img/paredesaltas/muro20x200.png";
 
 // Imagen pinchos
-
 let pinchosImagen = new Image();
 pinchosImagen.src = "img/pinchos.png";
 
-// Variable para parar intervalo ()
-
+// Variable para parar intervalo
 let limpiarInterval;
 
 // Dibujando imágenes en el canvas
@@ -538,7 +536,7 @@ const colisiones = () => {
     stopMusicaJuego();
     playSonidoGameOver();
     playMusicaGameOver();
-  } else if (estanPinchosActivos && cabeza.detectarColision(pinchos2)) {
+  } else if (estanPinchosActivos2 && cabeza.detectarColision(pinchos2)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
     clearInterval(limpiarInterval);
@@ -559,14 +557,14 @@ const colisiones = () => {
     stopMusicaJuego();
     playSonidoGameOver();
     playMusicaGameOver();
-  } else if (estanPinchosActivos && cabeza.detectarColision(pinchos5)) {
+  } else if (estanPinchosActivos2 && cabeza.detectarColision(pinchos5)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
     clearInterval(limpiarInterval);
     stopMusicaJuego();
     playSonidoGameOver();
     playMusicaGameOver();
-  } else if (estanPinchosActivos && cabeza.detectarColision(pinchos6)) {
+  } else if (estanPinchosActivos2 && cabeza.detectarColision(pinchos6)) {
     canvas.style.display = "none";
     gameOverScreen.style.display = "flex";
     clearInterval(limpiarInterval);
