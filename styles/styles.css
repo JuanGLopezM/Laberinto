@@ -30,6 +30,13 @@ canvas {
   margin-top: 40px;
   border-radius: 10px; 
 }
+.hovering:hover {
+  box-shadow: 0 0px 20px 0 rgb(78, 108, 95);
+  transition: box-shadow 0.3s ease-in-out;
+}
+.redondeo {
+border-radius: 10px; 
+}
 #canvas, #gameover-screen, #wingame-screen, #howtoplay-screen, #soundsetting-screen{
   display: none;
 }
