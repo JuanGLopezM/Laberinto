@@ -69,6 +69,7 @@ const sonidoBotones = new Audio("audio/sonidobotones.mp3");
 const sonidoGameOver = new Audio("audio/sonidogameover.mp3");
 const sonidoWinGame = new Audio("audio/sonidowingame.mp3");
 const sonidoSonidoOff = new Audio("audio/sonidosonidooff.mp3");
+const sonidoCoin = new Audio("audio/coin.mp3");
 
 function playSonidoJugar() {
   if ((sonidoOnOff = true)) {
@@ -103,6 +104,13 @@ function playSonidoWinGame() {
     sonidoWinGame.currentTime = 0;
     sonidoWinGame.volume = 0.1;
     sonidoWinGame.play();
+  }
+}
+function playSonidoCoin() {
+  if ((sonidoOnOff = true)) {
+    sonidoCoin.currentTime = 0;
+    sonidoCoin.volume = 0.5;
+    sonidoCoin.play();
   }
 }
 
@@ -420,7 +428,8 @@ const colisiones = () => {
     stopMusicaJuego();
     playSonidoGameOver();
     playMusicaGameOver();
-    // } else if (cabeza.detectarColision(pared10)) {
+  } else if (cabeza.detectarColision(pared10)) {
+    playSonidoCoin();
     //   canvas.style.display = "none";
     //   gameOverScreen.style.display = "flex";
     //   clearInterval(limpiarInterval);
@@ -489,7 +498,8 @@ const colisiones = () => {
     stopMusicaJuego();
     playSonidoGameOver();
     playMusicaGameOver();
-    // } else if (cabeza.detectarColision(pared20)) {
+  } else if (cabeza.detectarColision(pared20)) {
+    playSonidoCoin();
     //   canvas.style.display = "none";
     //   gameOverScreen.style.display = "flex";
     //   clearInterval(limpiarInterval);
@@ -510,7 +520,8 @@ const colisiones = () => {
     stopMusicaJuego();
     playSonidoGameOver();
     playMusicaGameOver();
-    // } else if (cabeza.detectarColision(pared23)) {
+  } else if (cabeza.detectarColision(pared23)) {
+    playSonidoCoin();
     //   canvas.style.display = "none";
     //   gameOverScreen.style.display = "flex";
     //   clearInterval(limpiarInterval);
